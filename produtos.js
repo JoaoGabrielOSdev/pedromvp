@@ -59,7 +59,7 @@ const PRODUTOS = [
   // Fios de PDO
   { nome: "I-Thread Cânula Filler 21G · 4 unid.",     categoria: "Fios de PDO", preco: 329, imagem: "assets/produtos/ithread-canula-filler-21g.webp" },
   { nome: "I-Thread Cânula Espiculado 19G · 4 unid.", categoria: "Fios de PDO", preco: 329, imagem: "assets/produtos/ithread-canula-espiculado-19g.webp" },
-  { nome: "I-Thread Liso Mono 29G · 10 unid.",        categoria: "Fios de PDO", preco: 189, imagem: "" },
+  { nome: "I-Thread Liso Mono 29G · 10 unid.",        categoria: "Fios de PDO", preco: 189, imagem: "assets/produtos/ithread-liso-mono-29g.webp" },
   { nome: "Prodeep Cutting Cog 3D 19G · 4 unid.",     categoria: "Fios de PDO", preco: 279, imagem: "assets/produtos/prodeep-cutting-cog-3d.webp" },
   { nome: "Prodeep Hydra Plus 21G · 4 unid.",         categoria: "Fios de PDO", preco: 329, imagem: "assets/produtos/prodeep-hydra-plus.webp" },
   { nome: "Prodeep Mono Agulha 29G · 10 unid.",       categoria: "Fios de PDO", preco: 189, imagem: "assets/produtos/prodeep-mono-agulha-29g.webp" },
@@ -68,5 +68,5 @@ const PRODUTOS = [
   { nome: "GHK-Cu Peptide La Cutanée · Ampola 3ml",   categoria: "Outros", preco: 389, imagem: "assets/produtos/ghk-cu-la-cutanee.webp" },
   { nome: "NCT-BIO La Cutanée · Ampola 3ml",          categoria: "Outros", preco: 209, imagem: "assets/produtos/nct-bio-la-cutanee.webp" },
   { nome: "La Cutanée PDRN · Ampola 3ml",             categoria: "Outros", preco: 189, imagem: "" },
-  { nome: "Hialuronidase Victlab 3000 UTR",           categoria: "Outros", preco: 69,  imagem: "" },
+  { nome: "Hialuronidase Victlab 3000 UTR",           categoria: "Outros", preco: 69,  imagem: "assets/produtos/hialuronidase-victlab.webp" },
 ];

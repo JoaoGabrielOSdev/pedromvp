@@ -11,7 +11,7 @@ const WHATSAPP = "5544999251580";
 
 /* Atendentes — o botão do produto abre a escolha e leva ao WhatsApp escolhido */
 const ATENDENTES = [
-  { nome: "Micaely", whatsapp: "5544999251580" },
+  { nome: "Micaely", whatsapp: "554499251580" },
   { nome: "Débora",  whatsapp: "554430313530" },
   { nome: "Fran",    whatsapp: "5544991837550" },
   { nome: "Jessica", whatsapp: "5544991797948" },

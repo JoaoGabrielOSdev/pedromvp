@@ -128,3 +128,25 @@ footer a:hover{color:var(--gold-l)}
 .marquee-track span::after{content:"";width:5px;height:5px;margin-left:52px;background:var(--gold);transform:rotate(45deg);opacity:.7}
 @keyframes slide{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* escolha da atendente */
+#atendentes{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0;display:none;align-items:flex-end;justify-content:center}
+#atendentes[open]{display:flex}
+#atendentes::backdrop{background:rgba(13,12,10,.72);backdrop-filter:blur(3px)}
+.at-box{position:relative;width:100%;max-width:440px;background:var(--paper);border-top:2px solid var(--gold);padding:30px 22px 26px;animation:atIn .28s ease-out}
+.at-x{position:absolute;top:10px;right:12px;width:38px;height:38px;border:0;background:none;font-size:1.7rem;line-height:1;color:var(--mute);cursor:pointer}
+.at-x:hover{color:var(--ink)}
+.at-kicker{display:block;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-d);margin-bottom:6px}
+.at-box h3{font-size:1.4rem;color:var(--ink)}
+.at-prod{margin:6px 0 20px;font-size:.88rem;color:var(--mute)}
+.at-lista{display:grid;gap:10px}
+.at{display:flex;align-items:center;gap:14px;padding:12px 14px;background:#fff;border:1px solid var(--line);transition:border-color .2s,transform .2s}
+.at:hover{border-color:var(--gold);transform:translateX(2px)}
+.at-ini{flex:none;width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--ink);color:var(--gold-l);font:600 1rem var(--serif)}
+.at-nome{flex:1;display:flex;flex-direction:column;line-height:1.25}
+.at-nome strong{font:600 .98rem var(--serif);color:var(--ink)}
+.at-nome small{font-size:.74rem;color:var(--mute)}
+.at svg{width:22px;height:22px;fill:var(--wa);flex:none}
+@media(min-width:600px){#atendentes{align-items:center}.at-box{border:1px solid var(--line);border-top:2px solid var(--gold);padding:34px 30px 30px}}
+@keyframes atIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.at-box{animation:none}}

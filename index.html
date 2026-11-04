@@ -17,10 +17,10 @@
   <div class="wrap bar">
     <a href="#topo"><img src="assets/logo.jpg" alt="Harmonic Estetic Center"></a>
     <nav>
-      <a href="#vitrine" data-cat="Toxinas">Toxinas</a>
+      <a href="#vitrine" data-cat="Toxinas Botulínicas">Toxinas</a>
       <a href="#vitrine" data-cat="Preenchedores">Preenchedores</a>
       <a href="#vitrine" data-cat="Bioestimuladores">Bioestimuladores</a>
-      <a href="#vitrine" data-cat="Fios de Sustentação">Fios</a>
+      <a href="#vitrine" data-cat="Fios de PDO">Fios</a>
       <a href="#diferenciais">Diferenciais</a>
     </nav>
     <a class="btn wa-link" data-msg="Olá! Gostaria de falar com um consultor da Harmonic." href="#"><svg><use href="#wa"/></svg>WhatsApp</a>
@@ -88,10 +88,20 @@
 
 <a class="fab wa-link" data-msg="Olá! Gostaria de falar com a Harmonic." href="#" aria-label="Falar no WhatsApp"><svg><use href="#wa"/></svg></a>
 
+<dialog id="atendentes" aria-labelledby="at-titulo">
+  <div class="at-box">
+    <button type="button" class="at-x" data-fechar aria-label="Fechar">&times;</button>
+    <span class="at-kicker">Atendimento pelo WhatsApp</span>
+    <h3 id="at-titulo">Escolha sua atendente</h3>
+    <p class="at-prod" id="at-produto"></p>
+    <div class="at-lista" id="at-lista"></div>
+  </div>
+</dialog>
+
 <script src="produtos.js"></script>
 <script>
 const brl = n => n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
-const MARCAS=["Botox","Dysport","Xeomin","Letybo","Nabota","Botulim","Restylane","Juvéderm","Rennova","Sculptra","Radiesse","Belotero","Ellansé","Profhilo","Perfectha","Biogelis","Prodeep"];
+const MARCAS=["Botox","Dysport","Xeomin","Letybo","Nabota","Botulim","Restylane","Juvéderm","Rennova","Sculptra","Radiesse","Harmonyca","Belotero","Neuramis","Perfectha","Yvoire","Biogelis","Prodeep","I-Thread","La Cutanée"];
 $m=document.getElementById("marcas");$m.innerHTML=[...MARCAS,...MARCAS].map(m=>`<span>${m}</span>`).join("");
 const wa = msg => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 const $ = s => document.querySelector(s);
@@ -111,12 +121,23 @@ function renderGrid(){
   $("#titulo").textContent = atual==="Todos"?"Todos os produtos":atual;
   $("#grid").innerHTML = lista.map(p=>{
     const img = p.imagem?`<img src="${esc(p.imagem)}" alt="${esc(p.nome)}" loading="lazy">`:`<span class="mono">${esc(p.nome.charAt(0))}</span>`;
-    const msg = `Olá! Tenho interesse no produto ${p.nome}. Pode me passar mais informações?`;
-    return `<article class="card"><div class="ph">${img}</div><div class="info"><span class="tag">${p.categoria}</span><h3>${esc(p.nome)}</h3><div class="price">${brl(p.preco)}<small>no Pix</small></div><span class="hint">Condições especiais no WhatsApp</span><a class="btn wa-link" href="${wa(msg)}" target="_blank" rel="noopener">Comprar pelo WhatsApp</a></div></article>`;
+    return `<article class="card"><div class="ph">${img}</div><div class="info"><span class="tag">${p.categoria}</span><h3>${esc(p.nome)}</h3><div class="price">${brl(p.preco)}<small>no Pix</small></div><span class="hint">Condições especiais no WhatsApp</span><button type="button" class="btn" data-comprar="${esc(p.nome)}">Comprar pelo WhatsApp</button></div></article>`;
   }).join("");
 }
+
+/* escolha da atendente */
+const $dlg = $("#atendentes");
+function abrirAtendentes(produto){
+  const msg = `Olá! Tenho interesse no produto ${produto}. Pode me passar mais informações?`;
+  $("#at-produto").textContent = produto;
+  $("#at-lista").innerHTML = ATENDENTES.map(a=>`<a class="at" href="https://wa.me/${a.whatsapp}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener"><span class="at-ini">${esc(a.nome.charAt(0))}</span><span class="at-nome"><strong>${esc(a.nome)}</strong><small>Harmonic Estetic Center</small></span><svg><use href="#wa"/></svg></a>`).join("");
+  $dlg.showModal();
+}
+$dlg.addEventListener("click",e=>{if(e.target===$dlg||e.target.closest("[data-fechar]")||e.target.closest(".at"))$dlg.close()});
 function setCat(c){atual=c;renderCats();renderGrid()}
 document.addEventListener("click",e=>{
+  const c=e.target.closest("[data-comprar]");
+  if(c){abrirAtendentes(c.dataset.comprar);return}
   const b=e.target.closest("[data-cat]");
   if(b){setCat(b.dataset.cat);if(b.tagName==="BUTTON")$("#vitrine").scrollIntoView()}
 });
